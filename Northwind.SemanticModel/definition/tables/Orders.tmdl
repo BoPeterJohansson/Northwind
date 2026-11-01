@@ -27,15 +27,6 @@ table Orders
 
 		annotation SummarizationSetBy = Automatic
 
-	column ShipID
-		dataType: int64
-		formatString: 0
-		lineageTag: 3290b802-1e77-4a57-a646-e6a0b3f7790c
-		summarizeBy: count
-		sourceColumn: ShipID
-
-		annotation SummarizationSetBy = Automatic
-
 	column 'Order Date'
 		dataType: dateTime
 		formatString: Long Date
@@ -125,6 +116,15 @@ table Orders
 		lineageTag: 626dcb08-9a8e-4d9c-9347-778e2973deb0
 		summarizeBy: none
 		sourceColumn: Ship Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipperID
+		dataType: int64
+		formatString: 0
+		lineageTag: 500ed739-b7ce-4350-a27f-1ddd8e8aa288
+		summarizeBy: none
+		sourceColumn: ShipperID
 
 		annotation SummarizationSetBy = Automatic
 

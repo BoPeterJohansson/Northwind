@@ -36,3 +36,7 @@ relationship AutoDetected_a479a3b2-c6c6-4047-a74c-d98a5580da12
 	fromColumn: Territories.RegionID
 	toColumn: Region.RegionID
 
+relationship AutoDetected_729f5388-3e7a-4657-b207-67c6210358a2
+	fromColumn: Orders.ShipperID
+	toColumn: Shippers.ShipperID
+

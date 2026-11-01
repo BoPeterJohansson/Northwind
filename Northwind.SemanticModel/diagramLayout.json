@@ -65,12 +65,12 @@
         {
           "location": {
             "x": 0,
-            "y": 426.04138833171913
+            "y": 374.14597639866719
           },
           "nodeIndex": "Orders",
           "nodeLineageTag": "671241f8-3fa1-4bd0-9945-1f0a71bb37ac",
           "size": {
-            "height": 152,
+            "height": 176,
             "width": 234
           },
           "zIndex": 5,
@@ -79,10 +79,10 @@
         {
           "location": {
             "x": 0,
-            "y": 601.22733337072327
+            "y": 586.03843231714711
           },
           "nodeIndex": "Products",
-          "nodeLineageTag": "63f157d5-ce3f-4aae-a4fa-481644ef9d8c",
+          "nodeLineageTag": "9e8dc07a-b56c-497b-98cf-06c77b6fd72e",
           "size": {
             "height": 152,
             "width": 234
