@@ -1,28 +1,19 @@
 table Products
-	lineageTag: 63f157d5-ce3f-4aae-a4fa-481644ef9d8c
+	lineageTag: 9e8dc07a-b56c-497b-98cf-06c77b6fd72e
 
 	column ProductID
 		dataType: int64
-		isKey
 		formatString: 0
-		lineageTag: 6016879d-d436-4ab0-ac6c-9d0bb2bd706a
+		lineageTag: a0c2a84b-bb7f-43df-a935-d8ed4bbea933
 		summarizeBy: none
 		sourceColumn: ProductID
-
-		annotation SummarizationSetBy = Automatic
-
-	column ProductName
-		dataType: string
-		lineageTag: 40dae148-80a0-4590-9fe5-a77f209bab1b
-		summarizeBy: none
-		sourceColumn: ProductName
 
 		annotation SummarizationSetBy = Automatic
 
 	column SupplierID
 		dataType: int64
 		formatString: 0
-		lineageTag: b1f90480-544c-4df8-94e1-b9aa6072f419
+		lineageTag: 7563e427-ac68-46f1-b7b0-f569346391b2
 		summarizeBy: none
 		sourceColumn: SupplierID
 
@@ -31,61 +22,70 @@ table Products
 	column CategoryID
 		dataType: int64
 		formatString: 0
-		lineageTag: b3191f72-3aba-4901-bff8-25fba47c68b1
+		lineageTag: 1198f269-dbf6-4f26-bf2d-4544e751dec6
 		summarizeBy: none
 		sourceColumn: CategoryID
 
 		annotation SummarizationSetBy = Automatic
 
-	column QuantityPerUnit
+	column 'Product Name'
 		dataType: string
-		lineageTag: b0c453e9-5d9d-4284-a928-ce0e2ebacd0b
+		lineageTag: 391bd146-85d8-4a06-a810-f06f11dbc68f
 		summarizeBy: none
-		sourceColumn: QuantityPerUnit
+		sourceColumn: Product Name
 
 		annotation SummarizationSetBy = Automatic
 
-	column UnitPrice
-		dataType: double
-		lineageTag: 5c2a283e-6663-4c04-8e38-76934b178deb
+	column 'Quantity Per Unit'
+		dataType: string
+		lineageTag: 8c404c4a-d9f5-4247-a220-1b498691a6c8
 		summarizeBy: none
-		sourceColumn: UnitPrice
+		sourceColumn: Quantity Per Unit
 
-		annotation SummarizationSetBy = User
+		annotation SummarizationSetBy = Automatic
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+	column 'Unit Price'
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 763d88e5-92ec-470e-9413-cd2d7a26c0ed
+		summarizeBy: sum
+		sourceColumn: Unit Price
 
-	column UnitsInStock
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-AU"}
+
+	column 'Units In Stock'
 		dataType: int64
 		formatString: 0
-		lineageTag: f9dc2527-d632-4448-a718-eac5b2609173
-		summarizeBy: none
-		sourceColumn: UnitsInStock
+		lineageTag: 995741fd-ca18-4836-b302-186a3ba87e6a
+		summarizeBy: sum
+		sourceColumn: Units In Stock
 
-		annotation SummarizationSetBy = User
+		annotation SummarizationSetBy = Automatic
 
-	column UnitsOnOrder
+	column 'Units On Order'
 		dataType: int64
 		formatString: 0
-		lineageTag: ed447162-6236-4178-ab4a-c26cb867b505
-		summarizeBy: none
-		sourceColumn: UnitsOnOrder
+		lineageTag: 73f79a50-1ac3-4ad1-b162-a903946a6ced
+		summarizeBy: sum
+		sourceColumn: Units On Order
 
-		annotation SummarizationSetBy = User
+		annotation SummarizationSetBy = Automatic
 
-	column ReorderLevel
+	column 'Reorder Level'
 		dataType: int64
 		formatString: 0
-		lineageTag: 9447cae9-81fc-4627-b696-d0c3bd90ac87
-		summarizeBy: none
-		sourceColumn: ReorderLevel
+		lineageTag: bb908150-1b0a-4839-a02f-2353d8b3cb5b
+		summarizeBy: sum
+		sourceColumn: Reorder Level
 
-		annotation SummarizationSetBy = User
+		annotation SummarizationSetBy = Automatic
 
 	column Discontinued
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
-		lineageTag: c470f860-801e-4fa6-912c-860f3222bfbc
+		lineageTag: 329c3e27-95c8-4bf5-939b-10c0872baa66
 		summarizeBy: none
 		sourceColumn: Discontinued
 
@@ -95,9 +95,10 @@ table Products
 		mode: import
 		source =
 				let
-				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [ProductID]#(lf)      ,[ProductName]#(lf)      ,[SupplierID]#(lf)      ,[CategoryID]#(lf)      ,[QuantityPerUnit]#(lf)      ,[UnitPrice]#(lf)      ,[UnitsInStock]#(lf)      ,[UnitsOnOrder]#(lf)      ,[ReorderLevel]#(lf)      ,[Discontinued]#(lf)  FROM [Northwind].[dbo].[Products]"])
+				  Source = Sql.Database("localhost", "Northwind"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "vw_Products"]}[Data]
 				in
-				  Source
+				  #"Navigation 1"
 
 	annotation PBI_ResultType = Table
 

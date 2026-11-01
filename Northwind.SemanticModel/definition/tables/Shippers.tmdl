@@ -1,27 +1,26 @@
 table Shippers
-	lineageTag: bb4d5f6f-053d-4a6b-8bbe-81a00d6d6d6e
+	lineageTag: f2fb4778-e210-4410-89fb-20bb4b030c41
 
 	column ShipperID
 		dataType: int64
-		isKey
 		formatString: 0
-		lineageTag: 2985892d-c5e1-4de6-81a6-7c7a9b4a62b7
-		summarizeBy: none
+		lineageTag: 43215dc6-68b5-40e9-b2f8-86fc01b56135
+		summarizeBy: count
 		sourceColumn: ShipperID
 
-		annotation SummarizationSetBy = User
+		annotation SummarizationSetBy = Automatic
 
-	column CompanyName
+	column 'Company Name'
 		dataType: string
-		lineageTag: b6cb9007-3be3-4c9b-b1ce-45444438bf14
+		lineageTag: d3a7f9fd-9593-42c9-847c-4797a9bb1d5b
 		summarizeBy: none
-		sourceColumn: CompanyName
+		sourceColumn: Company Name
 
 		annotation SummarizationSetBy = Automatic
 
 	column Phone
 		dataType: string
-		lineageTag: ddfd4c23-a105-4721-a0ab-1a8a5527b21f
+		lineageTag: 33cece06-a066-4e9f-b2a0-2baed445936a
 		summarizeBy: none
 		sourceColumn: Phone
 
@@ -31,9 +30,10 @@ table Shippers
 		mode: import
 		source =
 				let
-				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [ShipperID]#(lf)      ,[CompanyName]#(lf)      ,[Phone]#(lf)  FROM [Northwind].[dbo].[Shippers]#(lf)"])
+				  Source = Sql.Database("localhost", "Northwind"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "vw_Shippers"]}[Data]
 				in
-				  Source
+				  #"Navigation 1"
 
 	annotation PBI_ResultType = Table
 

@@ -1,42 +1,41 @@
 table Customers
-	lineageTag: 9f4e6c07-ad64-47f0-bd43-68913bd501db
+	lineageTag: 61e78a4e-2acc-4785-950a-aad3024544c0
 
 	column CustomerID
 		dataType: string
-		isKey
-		lineageTag: c925710f-6614-4b4e-bd97-a8f39580b7d0
+		lineageTag: b53f2a74-d730-4f8e-a82f-057d9895a3d1
 		summarizeBy: none
 		sourceColumn: CustomerID
 
 		annotation SummarizationSetBy = Automatic
 
-	column CompanyName
+	column 'Company Name'
 		dataType: string
-		lineageTag: 9b6438af-6bd9-414a-a78a-e146bc453c88
+		lineageTag: 2f6abbf1-e449-40e8-9b62-52cedb8804de
 		summarizeBy: none
-		sourceColumn: CompanyName
+		sourceColumn: Company Name
 
 		annotation SummarizationSetBy = Automatic
 
-	column ContactName
+	column 'Contact Name'
 		dataType: string
-		lineageTag: 47870a2f-eb36-470a-91e5-ce8754fdc6b8
+		lineageTag: 7998f6c3-ed19-4ddd-ad3b-3b1087bd863b
 		summarizeBy: none
-		sourceColumn: ContactName
+		sourceColumn: Contact Name
 
 		annotation SummarizationSetBy = Automatic
 
-	column ContactTitle
+	column 'Contact Title'
 		dataType: string
-		lineageTag: 51058483-2a9f-44cc-a72e-909e44bd4681
+		lineageTag: c16ee70d-63dc-4dc6-ba52-8621e971208b
 		summarizeBy: none
-		sourceColumn: ContactTitle
+		sourceColumn: Contact Title
 
 		annotation SummarizationSetBy = Automatic
 
 	column Address
 		dataType: string
-		lineageTag: fa323084-2d96-41cf-a348-7212fa2bc5be
+		lineageTag: de3433d6-df05-4e20-bbbb-6069ffc5df64
 		summarizeBy: none
 		sourceColumn: Address
 
@@ -44,7 +43,7 @@ table Customers
 
 	column City
 		dataType: string
-		lineageTag: 388d8fc0-03b7-4a08-9d87-7c81cc126dcf
+		lineageTag: 9d413282-539b-409e-9bfb-7182994ea7d3
 		summarizeBy: none
 		sourceColumn: City
 
@@ -52,23 +51,23 @@ table Customers
 
 	column Region
 		dataType: string
-		lineageTag: e069f289-c72d-4a4e-90c5-fbdc954dc87a
+		lineageTag: e60ae929-1c00-4f30-af08-9db534615b79
 		summarizeBy: none
 		sourceColumn: Region
 
 		annotation SummarizationSetBy = Automatic
 
-	column PostalCode
+	column 'Postal Code'
 		dataType: string
-		lineageTag: 917028b1-e3da-4a5c-8b9e-3dfd893d4da3
+		lineageTag: e7b12f33-6221-4089-a1e3-04a987ff83cf
 		summarizeBy: none
-		sourceColumn: PostalCode
+		sourceColumn: Postal Code
 
 		annotation SummarizationSetBy = Automatic
 
 	column Country
 		dataType: string
-		lineageTag: 197f3ba3-2e76-4c75-b8d4-3c52df8f4835
+		lineageTag: 0be913d0-c2cc-4a04-af79-b5ac92d720fd
 		summarizeBy: none
 		sourceColumn: Country
 
@@ -76,7 +75,7 @@ table Customers
 
 	column Phone
 		dataType: string
-		lineageTag: bfe14a4b-3d94-4f0d-ada9-5a976f21de94
+		lineageTag: 7100b3c3-ebec-40fe-808a-7e169fdfac65
 		summarizeBy: none
 		sourceColumn: Phone
 
@@ -84,7 +83,7 @@ table Customers
 
 	column Fax
 		dataType: string
-		lineageTag: c9c03656-cfde-4397-88a3-b3a30e53fd2f
+		lineageTag: 71653ed1-ca5f-4767-8c29-57583d75bb6f
 		summarizeBy: none
 		sourceColumn: Fax
 
@@ -94,9 +93,10 @@ table Customers
 		mode: import
 		source =
 				let
-				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [CustomerID]#(lf)      ,[CompanyName]#(lf)      ,[ContactName]#(lf)      ,[ContactTitle]#(lf)      ,[Address]#(lf)      ,[City]#(lf)      ,[Region]#(lf)      ,[PostalCode]#(lf)      ,[Country]#(lf)      ,[Phone]#(lf)      ,[Fax]#(lf)  FROM [Northwind].[dbo].[Customers]#(lf)"])
+				  Source = Sql.Database("localhost", "Northwind"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "vw_Customers"]}[Data]
 				in
-				  Source
+				  #"Navigation 1"
 
 	annotation PBI_ResultType = Table
 

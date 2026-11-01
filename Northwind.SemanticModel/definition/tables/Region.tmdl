@@ -1,21 +1,20 @@
 table Region
-	lineageTag: 17a6c6b3-4dda-470c-a1ec-4fae03258eae
+	lineageTag: 72ef0239-7387-48af-b6fc-71efb5bffc84
 
 	column RegionID
 		dataType: int64
-		isKey
 		formatString: 0
-		lineageTag: 6cbf8d7a-14d5-41ef-a759-ed32532f224e
+		lineageTag: 3e520272-6b9d-44a0-9ef7-ffdab5523944
 		summarizeBy: none
 		sourceColumn: RegionID
 
 		annotation SummarizationSetBy = Automatic
 
-	column RegionDescription
+	column 'Region Description'
 		dataType: string
-		lineageTag: a8b38725-0318-45a0-b921-a60b38e10eff
+		lineageTag: bb0021f1-9d00-4f0c-b4ab-25e43f7a87d6
 		summarizeBy: none
-		sourceColumn: RegionDescription
+		sourceColumn: Region Description
 
 		annotation SummarizationSetBy = Automatic
 
@@ -23,9 +22,10 @@ table Region
 		mode: import
 		source =
 				let
-				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [RegionID]#(lf)      ,[RegionDescription]#(lf)  FROM [Northwind].[dbo].[Region]#(lf)"])
+				  Source = Sql.Database("localhost", "Northwind"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "vw_Region"]}[Data]
 				in
-				  Source
+				  #"Navigation 1"
 
 	annotation PBI_ResultType = Table
 

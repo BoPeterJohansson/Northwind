@@ -1,43 +1,42 @@
 table Suppliers
-	lineageTag: 254c17dc-a127-4de0-86e5-a545bd742e00
+	lineageTag: 685941c8-bc3e-4785-9a25-b89eda829f91
 
 	column SupplierID
 		dataType: int64
-		isKey
 		formatString: 0
-		lineageTag: 1657a155-b3f1-4828-ab83-4a89ff579887
+		lineageTag: 126eefc7-0ad0-47c0-8a18-6467fd4bd82a
 		summarizeBy: none
 		sourceColumn: SupplierID
 
 		annotation SummarizationSetBy = Automatic
 
-	column CompanyName
+	column 'Company Name'
 		dataType: string
-		lineageTag: d263782a-62e8-447d-b43c-ea1a740bf5d9
+		lineageTag: 559aff36-8d56-4833-bfe0-2d1dfc334801
 		summarizeBy: none
-		sourceColumn: CompanyName
+		sourceColumn: Company Name
 
 		annotation SummarizationSetBy = Automatic
 
-	column ContactName
+	column 'Contact Name'
 		dataType: string
-		lineageTag: cae09f4f-6263-43c7-baf9-2b481c921680
+		lineageTag: ced387b6-f137-4662-9d23-27178e99e25e
 		summarizeBy: none
-		sourceColumn: ContactName
+		sourceColumn: Contact Name
 
 		annotation SummarizationSetBy = Automatic
 
-	column ContactTitle
+	column 'Contact Title'
 		dataType: string
-		lineageTag: 3a1ffbde-5035-4c5b-beba-092176d40a13
+		lineageTag: 8514441b-aa54-4f0c-a154-686b499846c7
 		summarizeBy: none
-		sourceColumn: ContactTitle
+		sourceColumn: Contact Title
 
 		annotation SummarizationSetBy = Automatic
 
 	column Address
 		dataType: string
-		lineageTag: 702d57c2-f6d4-4f27-b929-74d60287ce24
+		lineageTag: f81d0a11-e0a2-4ebf-836d-62edcb2e613c
 		summarizeBy: none
 		sourceColumn: Address
 
@@ -45,7 +44,7 @@ table Suppliers
 
 	column City
 		dataType: string
-		lineageTag: 9b3e42b2-27bf-41f2-9747-0744752126d4
+		lineageTag: ed84dd65-c779-46bb-811a-8ee00dc14cab
 		summarizeBy: none
 		sourceColumn: City
 
@@ -53,23 +52,23 @@ table Suppliers
 
 	column Region
 		dataType: string
-		lineageTag: ba00b643-2ef8-4a11-bdab-b3260212a7c0
+		lineageTag: 2928c2db-4516-48fe-ab85-601144f7b542
 		summarizeBy: none
 		sourceColumn: Region
 
 		annotation SummarizationSetBy = Automatic
 
-	column PostalCode
+	column 'Postal Code'
 		dataType: string
-		lineageTag: 8306aec9-fec4-432a-98c6-0070919f13b5
+		lineageTag: b1b61e78-41e8-44f9-8a13-12c50cfd966f
 		summarizeBy: none
-		sourceColumn: PostalCode
+		sourceColumn: Postal Code
 
 		annotation SummarizationSetBy = Automatic
 
 	column Country
 		dataType: string
-		lineageTag: ce7b91a4-fbb5-4cac-aaab-65a2c94b34bd
+		lineageTag: 0df3a068-2ff3-44a2-a473-a0d7443ffa59
 		summarizeBy: none
 		sourceColumn: Country
 
@@ -77,7 +76,7 @@ table Suppliers
 
 	column Phone
 		dataType: string
-		lineageTag: ecff4942-6c28-4998-a689-2bd9aeb65162
+		lineageTag: 3873b38a-204c-4e14-9811-669115a37d09
 		summarizeBy: none
 		sourceColumn: Phone
 
@@ -85,17 +84,17 @@ table Suppliers
 
 	column Fax
 		dataType: string
-		lineageTag: e7a94ea2-55f2-4fd6-b616-320856a88d4b
+		lineageTag: 3c575c65-6b56-4fa7-995d-f67cccf29ac6
 		summarizeBy: none
 		sourceColumn: Fax
 
 		annotation SummarizationSetBy = Automatic
 
-	column HomePage
+	column 'Home Page'
 		dataType: string
-		lineageTag: 49cdac42-6988-4f0e-89d1-8bee65dcb3e5
+		lineageTag: 048368ad-94d4-42d9-9c14-ae6c0e06c237
 		summarizeBy: none
-		sourceColumn: HomePage
+		sourceColumn: Home Page
 
 		annotation SummarizationSetBy = Automatic
 
@@ -103,9 +102,10 @@ table Suppliers
 		mode: import
 		source =
 				let
-				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [SupplierID]#(lf)      ,[CompanyName]#(lf)      ,[ContactName]#(lf)      ,[ContactTitle]#(lf)      ,[Address]#(lf)      ,[City]#(lf)      ,[Region]#(lf)      ,[PostalCode]#(lf)      ,[Country]#(lf)      ,[Phone]#(lf)      ,[Fax]#(lf)      ,[HomePage]#(lf)  FROM [Northwind].[dbo].[Suppliers]"])
+				  Source = Sql.Database("localhost", "Northwind"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "vw_Suppliers"]}[Data]
 				in
-				  Source
+				  #"Navigation 1"
 
 	annotation PBI_ResultType = Table
 

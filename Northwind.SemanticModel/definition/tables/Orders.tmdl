@@ -1,11 +1,10 @@
 table Orders
-	lineageTag: 22eb4128-fd53-4354-838b-093ac22bcefa
+	lineageTag: 671241f8-3fa1-4bd0-9945-1f0a71bb37ac
 
 	column OrderID
 		dataType: int64
-		isKey
 		formatString: 0
-		lineageTag: 5a37c56c-9bd1-4160-951c-3b37d4dfc922
+		lineageTag: c15537af-d090-44a1-87fe-766792ad0d17
 		summarizeBy: none
 		sourceColumn: OrderID
 
@@ -13,7 +12,7 @@ table Orders
 
 	column CustomerID
 		dataType: string
-		lineageTag: 5db403f3-4aec-46d0-ac1b-ece02f1d707d
+		lineageTag: da7c9554-85cb-45cf-98a1-268750d090b7
 		summarizeBy: none
 		sourceColumn: CustomerID
 
@@ -22,103 +21,110 @@ table Orders
 	column EmployeeID
 		dataType: int64
 		formatString: 0
-		lineageTag: dc12fdf7-a832-46c2-aae2-e3a7b7fd09d9
+		lineageTag: e893e778-db9c-4601-ae1b-2bfd8ac09e77
 		summarizeBy: none
 		sourceColumn: EmployeeID
 
 		annotation SummarizationSetBy = Automatic
 
-	column OrderDate
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: d8c6bd7f-773b-4e1e-abf0-58934fac98de
-		summarizeBy: none
-		sourceColumn: OrderDate
-
-		annotation SummarizationSetBy = Automatic
-
-	column RequiredDate
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: f62a33dc-da21-4216-b73c-ab610e454dc1
-		summarizeBy: none
-		sourceColumn: RequiredDate
-
-		annotation SummarizationSetBy = Automatic
-
-	column ShippedDate
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: 5d52b229-ba62-42f2-9c73-18c906af2bab
-		summarizeBy: none
-		sourceColumn: ShippedDate
-
-		annotation SummarizationSetBy = Automatic
-
-	column Freight
-		dataType: double
-		lineageTag: ba9d0ea3-c975-4404-bc48-292afd2f0bce
-		summarizeBy: none
-		sourceColumn: Freight
-
-		annotation SummarizationSetBy = User
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	column ShipName
-		dataType: string
-		lineageTag: caf52bc2-b2cf-4cba-a941-d41a54594e92
-		summarizeBy: none
-		sourceColumn: ShipName
-
-		annotation SummarizationSetBy = Automatic
-
-	column ShipAddress
-		dataType: string
-		lineageTag: 2ba94e99-69d4-42b6-95df-a3ce8eeef1f9
-		summarizeBy: none
-		sourceColumn: ShipAddress
-
-		annotation SummarizationSetBy = Automatic
-
-	column ShipCity
-		dataType: string
-		lineageTag: 0d4af934-7008-486b-9807-370e2bc4a1cc
-		summarizeBy: none
-		sourceColumn: ShipCity
-
-		annotation SummarizationSetBy = Automatic
-
-	column ShipRegion
-		dataType: string
-		lineageTag: b7b5edf4-5c9c-4752-bbff-b487fa608372
-		summarizeBy: none
-		sourceColumn: ShipRegion
-
-		annotation SummarizationSetBy = Automatic
-
-	column ShipPostalCode
-		dataType: string
-		lineageTag: 06958df7-144f-4971-8db4-824ed8124602
-		summarizeBy: none
-		sourceColumn: ShipPostalCode
-
-		annotation SummarizationSetBy = Automatic
-
-	column ShipCountry
-		dataType: string
-		lineageTag: a284668a-4664-4407-b51f-3e95587e349d
-		summarizeBy: none
-		sourceColumn: ShipCountry
-
-		annotation SummarizationSetBy = Automatic
-
-	column ShipperID
+	column ShipID
 		dataType: int64
 		formatString: 0
-		lineageTag: 4110091b-14b6-4c75-966e-07c3748376bd
+		lineageTag: 3290b802-1e77-4a57-a646-e6a0b3f7790c
+		summarizeBy: count
+		sourceColumn: ShipID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 37d5351f-19e2-43d2-b9fb-51332a2ca4cb
 		summarizeBy: none
-		sourceColumn: ShipperID
+		sourceColumn: Order Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Required Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 02264d4c-fd50-4284-852a-4244bc80f5c6
+		summarizeBy: none
+		sourceColumn: Required Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Shipped Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 24e68602-8ae1-41cd-ab5b-dcd6d7bfd6ab
+		summarizeBy: none
+		sourceColumn: Shipped Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Freight
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 806e7f49-5069-41a6-bf45-4e6cde6295fb
+		summarizeBy: sum
+		sourceColumn: Freight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-AU"}
+
+	column 'Ship Name'
+		dataType: string
+		lineageTag: c2b27fca-68be-440f-aa9e-bf5c2c29cc71
+		summarizeBy: none
+		sourceColumn: Ship Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship Address'
+		dataType: string
+		lineageTag: 7a2fd5dc-4b6f-4192-9586-4ee0d32416f0
+		summarizeBy: none
+		sourceColumn: Ship Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship City'
+		dataType: string
+		lineageTag: 67abac56-626d-4264-b8ce-82ad7a3633a4
+		summarizeBy: none
+		sourceColumn: Ship City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship Region'
+		dataType: string
+		lineageTag: d1577503-add4-43e0-9833-bb668723fec0
+		summarizeBy: none
+		sourceColumn: Ship Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship Postal Code'
+		dataType: string
+		lineageTag: f782521f-df5a-4307-bf4c-be2beeb8de26
+		summarizeBy: none
+		sourceColumn: Ship Postal Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship Country'
+		dataType: string
+		lineageTag: 626dcb08-9a8e-4d9c-9347-778e2973deb0
+		summarizeBy: none
+		sourceColumn: Ship Country
 
 		annotation SummarizationSetBy = Automatic
 
@@ -126,9 +132,10 @@ table Orders
 		mode: import
 		source =
 				let
-				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [OrderID]#(lf)      ,[CustomerID]#(lf)      ,[EmployeeID]#(lf)      ,[OrderDate]#(lf)      ,[RequiredDate]#(lf)      ,[ShippedDate]#(lf)      ,[ShipVia] AS [ShipperID]#(lf)      ,[Freight]#(lf)      ,[ShipName]#(lf)      ,[ShipAddress]#(lf)      ,[ShipCity]#(lf)      ,[ShipRegion]#(lf)      ,[ShipPostalCode]#(lf)      ,[ShipCountry]#(lf)  FROM [Northwind].[dbo].[Orders]#(lf)"])
+				  Source = Sql.Database("localhost", "Northwind"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "vw_Orders"]}[Data]
 				in
-				  Source
+				  #"Navigation 1"
 
 	annotation PBI_ResultType = Table
 

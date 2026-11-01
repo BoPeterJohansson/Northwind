@@ -1,10 +1,10 @@
 table 'Order Details'
-	lineageTag: 11cf862c-ad26-41c7-b987-74d90ff18d3d
+	lineageTag: df12e474-ccc4-41af-8719-cdcf31a62108
 
 	column OrderID
 		dataType: int64
 		formatString: 0
-		lineageTag: a51fcd42-bf53-4dab-8ea2-409caebff44b
+		lineageTag: 821b97d3-9f25-42ff-92c5-4ea44a345c53
 		summarizeBy: none
 		sourceColumn: OrderID
 
@@ -13,38 +13,39 @@ table 'Order Details'
 	column ProductID
 		dataType: int64
 		formatString: 0
-		lineageTag: 6d065e5d-f606-4dac-8946-3a4be1a76227
+		lineageTag: 3262b105-2562-4780-a4cd-3b1768cbd729
 		summarizeBy: none
 		sourceColumn: ProductID
 
 		annotation SummarizationSetBy = Automatic
 
-	column UnitPrice
-		dataType: double
-		lineageTag: 8e7a3b89-fd4a-4f3c-bf8d-4a4536f78409
-		summarizeBy: none
-		sourceColumn: UnitPrice
+	column 'Unit Price'
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 5764f85f-80bd-4a13-9390-41d17e9aff1a
+		summarizeBy: sum
+		sourceColumn: Unit Price
 
-		annotation SummarizationSetBy = User
+		annotation SummarizationSetBy = Automatic
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+		annotation PBI_FormatHint = {"currencyCulture":"en-AU"}
 
 	column Quantity
 		dataType: int64
 		formatString: 0
-		lineageTag: f6011235-9266-4476-8e03-bc277b6b2bb6
-		summarizeBy: none
+		lineageTag: a4e75f9f-c0fe-44c0-8ea3-3e685397f942
+		summarizeBy: sum
 		sourceColumn: Quantity
 
-		annotation SummarizationSetBy = User
+		annotation SummarizationSetBy = Automatic
 
 	column Discount
 		dataType: double
-		lineageTag: 01d67464-a54f-4e06-869b-a19dcbab155b
-		summarizeBy: none
+		lineageTag: 51c1c613-215c-4882-b229-3953e1cbed10
+		summarizeBy: sum
 		sourceColumn: Discount
 
-		annotation SummarizationSetBy = User
+		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -52,9 +53,10 @@ table 'Order Details'
 		mode: import
 		source =
 				let
-				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [OrderID]#(lf)      ,[ProductID]#(lf)      ,[UnitPrice]#(lf)      ,[Quantity]#(lf)      ,[Discount]#(lf)  FROM [Northwind].[dbo].[Order Details]"])
+				  Source = Sql.Database("localhost", "Northwind"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "vw_OrderDetails"]}[Data]
 				in
-				  Source
+				  #"Navigation 1"
 
 	annotation PBI_ResultType = Table
 

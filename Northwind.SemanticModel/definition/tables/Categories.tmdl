@@ -1,27 +1,26 @@
 table Categories
-	lineageTag: 5081a177-7e76-4ade-afbc-6c97672495f9
+	lineageTag: f3ac7fb8-cd71-4d75-b497-c1e62f732f0a
 
 	column CategoryID
 		dataType: int64
-		isKey
 		formatString: 0
-		lineageTag: e0c67d52-f83b-413a-80be-00a73b571a45
+		lineageTag: 6051d953-eec3-4492-9732-37b47893f2fd
 		summarizeBy: none
 		sourceColumn: CategoryID
 
 		annotation SummarizationSetBy = Automatic
 
-	column CategoryName
+	column 'Category Name'
 		dataType: string
-		lineageTag: 496fa56a-65b9-4055-bb9d-79d366c4a183
+		lineageTag: bee2acd2-1ab3-4c62-bd90-3c11d7934425
 		summarizeBy: none
-		sourceColumn: CategoryName
+		sourceColumn: Category Name
 
 		annotation SummarizationSetBy = Automatic
 
 	column Description
 		dataType: string
-		lineageTag: 119bca0f-5d1c-45d8-9644-385485e999b7
+		lineageTag: ead990d8-b98e-497e-a504-ce8730d1cc8a
 		summarizeBy: none
 		sourceColumn: Description
 
@@ -31,9 +30,10 @@ table Categories
 		mode: import
 		source =
 				let
-				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT #(lf)       [CategoryID]#(lf)      ,[CategoryName]#(lf)      ,[Description]#(lf)      ,[Picture]#(lf)  FROM [Northwind].[dbo].[Categories]"])
+				  Source = Sql.Database("localhost", "Northwind"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "vw_Categories"]}[Data]
 				in
-				  Source
+				  #"Navigation 1"
 
 	annotation PBI_ResultType = Table
 

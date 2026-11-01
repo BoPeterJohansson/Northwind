@@ -14,16 +14,16 @@ annotation PBI_QueryOrder = ["Categories","Customers","Employees","EmployeeTerri
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table Categories
-ref table Products
-ref table Suppliers
 ref table Orders
-ref table 'Order Details'
-ref table Shippers
-ref table Employees
+ref table Categories
 ref table Customers
+ref table Employees
 ref table EmployeeTerritories
+ref table 'Order Details'
+ref table Products
 ref table Region
+ref table Shippers
+ref table Suppliers
 ref table Territories
 
 ref cultureInfo en-US

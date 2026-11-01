@@ -1,10 +1,10 @@
 table EmployeeTerritories
-	lineageTag: 727c7daf-f4e8-49ef-aa7a-a432bba797b6
+	lineageTag: 962786e0-e015-494f-bd60-f2aac72d1058
 
 	column EmployeeID
 		dataType: int64
 		formatString: 0
-		lineageTag: e5fd4857-af1d-4215-be49-711fa6a307c8
+		lineageTag: e1f0d1ea-eeba-482b-af61-76478292036a
 		summarizeBy: none
 		sourceColumn: EmployeeID
 
@@ -12,7 +12,7 @@ table EmployeeTerritories
 
 	column TerritoryID
 		dataType: string
-		lineageTag: c7c22af3-f20c-433c-a1be-426899f0f103
+		lineageTag: 93a38d39-fa6c-42d2-972e-7ed8f99b8b2b
 		summarizeBy: none
 		sourceColumn: TerritoryID
 
@@ -22,9 +22,10 @@ table EmployeeTerritories
 		mode: import
 		source =
 				let
-				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [EmployeeID]#(lf)      ,[TerritoryID]#(lf)  FROM [Northwind].[dbo].[EmployeeTerritories]#(lf)"])
+				  Source = Sql.Database("localhost", "Northwind"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "vw_EmployeeTerritories"]}[Data]
 				in
-				  Source
+				  #"Navigation 1"
 
 	annotation PBI_ResultType = Table
 

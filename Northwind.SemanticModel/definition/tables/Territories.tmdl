@@ -1,29 +1,28 @@
 table Territories
-	lineageTag: d3b1b5b8-feac-47fe-a752-b12d44bca539
+	lineageTag: c25b7d58-7acb-49ad-883f-70a3da0e5f13
 
 	column TerritoryID
 		dataType: string
-		isKey
-		lineageTag: c3f993df-147b-4e3d-8ed3-603f69c15f93
+		lineageTag: 28f1c269-84d3-4ae1-ae04-54de21153d5e
 		summarizeBy: none
 		sourceColumn: TerritoryID
-
-		annotation SummarizationSetBy = Automatic
-
-	column TerritoryDescription
-		dataType: string
-		lineageTag: 99c8193a-c728-4f4e-b4c5-641158a62289
-		summarizeBy: none
-		sourceColumn: TerritoryDescription
 
 		annotation SummarizationSetBy = Automatic
 
 	column RegionID
 		dataType: int64
 		formatString: 0
-		lineageTag: 32d4016c-eec2-4729-aa53-3054d323be42
+		lineageTag: 6ba9bbbb-7fc9-42a8-93e9-2f5fa761d769
 		summarizeBy: none
 		sourceColumn: RegionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Territory Description'
+		dataType: string
+		lineageTag: 03d18fe2-7131-452d-9c4f-9f8f89cb43e3
+		summarizeBy: none
+		sourceColumn: Territory Description
 
 		annotation SummarizationSetBy = Automatic
 
@@ -31,9 +30,10 @@ table Territories
 		mode: import
 		source =
 				let
-				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [TerritoryID]#(lf)      ,[TerritoryDescription]#(lf)      ,[RegionID]#(lf)  FROM [Northwind].[dbo].[Territories]#(lf)"])
+				  Source = Sql.Database("localhost", "Northwind"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "vw_Territories"]}[Data]
 				in
-				  Source
+				  #"Navigation 1"
 
 	annotation PBI_ResultType = Table
 
