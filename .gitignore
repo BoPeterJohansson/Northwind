@@ -1,2 +1,15 @@
 **/.pbi/localSettings.json
 **/.pbi/cache.abf
+
+
+
+# Visual Studio / SSMS local workspace
+.vs/
+
+# User-specific settings
+*.user
+*.suo
+
+# Temporary files
+*.tmp
+*.log
