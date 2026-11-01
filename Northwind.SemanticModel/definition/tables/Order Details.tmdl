@@ -1,0 +1,60 @@
+table 'Order Details'
+	lineageTag: 11cf862c-ad26-41c7-b987-74d90ff18d3d
+
+	column OrderID
+		dataType: int64
+		formatString: 0
+		lineageTag: a51fcd42-bf53-4dab-8ea2-409caebff44b
+		summarizeBy: none
+		sourceColumn: OrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d065e5d-f606-4dac-8946-3a4be1a76227
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		lineageTag: 8e7a3b89-fd4a-4f3c-bf8d-4a4536f78409
+		summarizeBy: none
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: f6011235-9266-4476-8e03-bc277b6b2bb6
+		summarizeBy: none
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = User
+
+	column Discount
+		dataType: double
+		lineageTag: 01d67464-a54f-4e06-869b-a19dcbab155b
+		summarizeBy: none
+		sourceColumn: Discount
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Order Details' = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [OrderID]#(lf)      ,[ProductID]#(lf)      ,[UnitPrice]#(lf)      ,[Quantity]#(lf)      ,[Discount]#(lf)  FROM [Northwind].[dbo].[Order Details]"])
+				in
+				  Source
+
+	annotation PBI_ResultType = Table
+

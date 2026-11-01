@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Northwind"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "04c4009a-ca0a-44b4-bf65-f0283a14bcb5"
+  }
+}

@@ -1,0 +1,31 @@
+table Region
+	lineageTag: 17a6c6b3-4dda-470c-a1ec-4fae03258eae
+
+	column RegionID
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: 6cbf8d7a-14d5-41ef-a759-ed32532f224e
+		summarizeBy: none
+		sourceColumn: RegionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionDescription
+		dataType: string
+		lineageTag: a8b38725-0318-45a0-b921-a60b38e10eff
+		summarizeBy: none
+		sourceColumn: RegionDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Region = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [RegionID]#(lf)      ,[RegionDescription]#(lf)  FROM [Northwind].[dbo].[Region]#(lf)"])
+				in
+				  Source
+
+	annotation PBI_ResultType = Table
+

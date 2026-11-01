@@ -1,0 +1,39 @@
+table Territories
+	lineageTag: d3b1b5b8-feac-47fe-a752-b12d44bca539
+
+	column TerritoryID
+		dataType: string
+		isKey
+		lineageTag: c3f993df-147b-4e3d-8ed3-603f69c15f93
+		summarizeBy: none
+		sourceColumn: TerritoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TerritoryDescription
+		dataType: string
+		lineageTag: 99c8193a-c728-4f4e-b4c5-641158a62289
+		summarizeBy: none
+		sourceColumn: TerritoryDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionID
+		dataType: int64
+		formatString: 0
+		lineageTag: 32d4016c-eec2-4729-aa53-3054d323be42
+		summarizeBy: none
+		sourceColumn: RegionID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Territories = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [TerritoryID]#(lf)      ,[TerritoryDescription]#(lf)      ,[RegionID]#(lf)  FROM [Northwind].[dbo].[Territories]#(lf)"])
+				in
+				  Source
+
+	annotation PBI_ResultType = Table
+

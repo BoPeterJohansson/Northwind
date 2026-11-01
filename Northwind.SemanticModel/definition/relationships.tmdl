@@ -1,0 +1,42 @@
+relationship AutoDetected_8160370d-891e-46b3-bdbc-0b6791f5f24e
+	fromColumn: Products.CategoryID
+	toColumn: Categories.CategoryID
+
+relationship AutoDetected_4cfe3ba2-7108-4f32-9b4a-3ceda9bf98fd
+	fromColumn: 'Order Details'.ProductID
+	toColumn: Products.ProductID
+
+relationship AutoDetected_bc915850-c974-4cf9-abdd-cdd8c510f3fc
+	fromColumn: Products.SupplierID
+	toColumn: Suppliers.SupplierID
+
+relationship AutoDetected_2256755b-80a4-4117-97e4-73ee84d68acb
+	fromColumn: 'Order Details'.OrderID
+	toColumn: Orders.OrderID
+
+relationship AutoDetected_26dfcae9-496c-4dc2-b703-545b851578a6
+	fromColumn: Orders.CustomerID
+	toColumn: Customers.CustomerID
+
+relationship AutoDetected_ebcbbccb-727e-4047-a07b-af505fb412da
+	fromColumn: Orders.EmployeeID
+	toColumn: Employees.EmployeeID
+
+relationship AutoDetected_a45af165-8b5a-4552-9e13-897090173dc2
+	fromColumn: Orders.ShipperID
+	toColumn: Shippers.ShipperID
+
+relationship AutoDetected_4677e6ec-e983-45e9-8731-2f71cf204bf7
+	fromColumn: EmployeeTerritories.EmployeeID
+	toColumn: Employees.EmployeeID
+
+relationship AutoDetected_7ca42a9e-0125-4ac6-8cd6-d6e45036920d
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: EmployeeTerritories.TerritoryID
+	toColumn: Territories.TerritoryID
+
+relationship AutoDetected_884d54d9-137f-4729-8e81-0a9ddc07bf1c
+	fromColumn: Territories.RegionID
+	toColumn: Region.RegionID
+

@@ -1,0 +1,134 @@
+table Orders
+	lineageTag: 22eb4128-fd53-4354-838b-093ac22bcefa
+
+	column OrderID
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: 5a37c56c-9bd1-4160-951c-3b37d4dfc922
+		summarizeBy: none
+		sourceColumn: OrderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerID
+		dataType: string
+		lineageTag: 5db403f3-4aec-46d0-ac1b-ece02f1d707d
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmployeeID
+		dataType: int64
+		formatString: 0
+		lineageTag: dc12fdf7-a832-46c2-aae2-e3a7b7fd09d9
+		summarizeBy: none
+		sourceColumn: EmployeeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d8c6bd7f-773b-4e1e-abf0-58934fac98de
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column RequiredDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f62a33dc-da21-4216-b73c-ab610e454dc1
+		summarizeBy: none
+		sourceColumn: RequiredDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippedDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5d52b229-ba62-42f2-9c73-18c906af2bab
+		summarizeBy: none
+		sourceColumn: ShippedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Freight
+		dataType: double
+		lineageTag: ba9d0ea3-c975-4404-bc48-292afd2f0bce
+		summarizeBy: none
+		sourceColumn: Freight
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ShipName
+		dataType: string
+		lineageTag: caf52bc2-b2cf-4cba-a941-d41a54594e92
+		summarizeBy: none
+		sourceColumn: ShipName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipAddress
+		dataType: string
+		lineageTag: 2ba94e99-69d4-42b6-95df-a3ce8eeef1f9
+		summarizeBy: none
+		sourceColumn: ShipAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipCity
+		dataType: string
+		lineageTag: 0d4af934-7008-486b-9807-370e2bc4a1cc
+		summarizeBy: none
+		sourceColumn: ShipCity
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipRegion
+		dataType: string
+		lineageTag: b7b5edf4-5c9c-4752-bbff-b487fa608372
+		summarizeBy: none
+		sourceColumn: ShipRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipPostalCode
+		dataType: string
+		lineageTag: 06958df7-144f-4971-8db4-824ed8124602
+		summarizeBy: none
+		sourceColumn: ShipPostalCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipCountry
+		dataType: string
+		lineageTag: a284668a-4664-4407-b51f-3e95587e349d
+		summarizeBy: none
+		sourceColumn: ShipCountry
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipperID
+		dataType: int64
+		formatString: 0
+		lineageTag: 4110091b-14b6-4c75-966e-07c3748376bd
+		summarizeBy: none
+		sourceColumn: ShipperID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [OrderID]#(lf)      ,[CustomerID]#(lf)      ,[EmployeeID]#(lf)      ,[OrderDate]#(lf)      ,[RequiredDate]#(lf)      ,[ShippedDate]#(lf)      ,[ShipVia] AS [ShipperID]#(lf)      ,[Freight]#(lf)      ,[ShipName]#(lf)      ,[ShipAddress]#(lf)      ,[ShipCity]#(lf)      ,[ShipRegion]#(lf)      ,[ShipPostalCode]#(lf)      ,[ShipCountry]#(lf)  FROM [Northwind].[dbo].[Orders]#(lf)"])
+				in
+				  Source
+
+	annotation PBI_ResultType = Table
+

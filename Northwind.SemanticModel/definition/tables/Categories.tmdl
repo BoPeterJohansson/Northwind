@@ -1,0 +1,39 @@
+table Categories
+	lineageTag: 5081a177-7e76-4ade-afbc-6c97672495f9
+
+	column CategoryID
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: e0c67d52-f83b-413a-80be-00a73b571a45
+		summarizeBy: none
+		sourceColumn: CategoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryName
+		dataType: string
+		lineageTag: 496fa56a-65b9-4055-bb9d-79d366c4a183
+		summarizeBy: none
+		sourceColumn: CategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 119bca0f-5d1c-45d8-9644-385485e999b7
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Categories = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT #(lf)       [CategoryID]#(lf)      ,[CategoryName]#(lf)      ,[Description]#(lf)      ,[Picture]#(lf)  FROM [Northwind].[dbo].[Categories]"])
+				in
+				  Source
+
+	annotation PBI_ResultType = Table
+

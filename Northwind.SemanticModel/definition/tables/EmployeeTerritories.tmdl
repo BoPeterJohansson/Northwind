@@ -1,0 +1,30 @@
+table EmployeeTerritories
+	lineageTag: 727c7daf-f4e8-49ef-aa7a-a432bba797b6
+
+	column EmployeeID
+		dataType: int64
+		formatString: 0
+		lineageTag: e5fd4857-af1d-4215-be49-711fa6a307c8
+		summarizeBy: none
+		sourceColumn: EmployeeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TerritoryID
+		dataType: string
+		lineageTag: c7c22af3-f20c-433c-a1be-426899f0f103
+		summarizeBy: none
+		sourceColumn: TerritoryID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition EmployeeTerritories = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("localhost", "Northwind", [Query = "SELECT#(lf)       [EmployeeID]#(lf)      ,[TerritoryID]#(lf)  FROM [Northwind].[dbo].[EmployeeTerritories]#(lf)"])
+				in
+				  Source
+
+	annotation PBI_ResultType = Table
+
