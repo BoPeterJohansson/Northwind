@@ -3,16 +3,21 @@ table Region
 
 	column RegionID
 		dataType: int64
+		isHidden
+		isKey
 		formatString: 0
 		lineageTag: 3e520272-6b9d-44a0-9ef7-ffdab5523944
 		summarizeBy: none
 		sourceColumn: RegionID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Region Description'
 		dataType: string
 		lineageTag: bb0021f1-9d00-4f0c-b4ab-25e43f7a87d6
+		isDefaultLabel
 		summarizeBy: none
 		sourceColumn: Region Description
 

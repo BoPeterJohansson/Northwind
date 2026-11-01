@@ -3,34 +3,45 @@ table Products
 
 	column ProductID
 		dataType: int64
+		isHidden
+		isKey
 		formatString: 0
 		lineageTag: a0c2a84b-bb7f-43df-a935-d8ed4bbea933
 		summarizeBy: none
 		sourceColumn: ProductID
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column SupplierID
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 7563e427-ac68-46f1-b7b0-f569346391b2
 		summarizeBy: none
 		sourceColumn: SupplierID
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column CategoryID
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 1198f269-dbf6-4f26-bf2d-4544e751dec6
 		summarizeBy: none
 		sourceColumn: CategoryID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Product Name'
 		dataType: string
 		lineageTag: 391bd146-85d8-4a06-a810-f06f11dbc68f
+		isDefaultLabel
 		summarizeBy: none
 		sourceColumn: Product Name
 

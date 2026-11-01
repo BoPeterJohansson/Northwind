@@ -1,20 +1,27 @@
 table EmployeeTerritories
+	isHidden
 	lineageTag: 962786e0-e015-494f-bd60-f2aac72d1058
 
 	column EmployeeID
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: e1f0d1ea-eeba-482b-af61-76478292036a
 		summarizeBy: none
 		sourceColumn: EmployeeID
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column TerritoryID
 		dataType: string
+		isHidden
 		lineageTag: 93a38d39-fa6c-42d2-972e-7ed8f99b8b2b
 		summarizeBy: none
 		sourceColumn: TerritoryID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -26,6 +33,8 @@ table EmployeeTerritories
 				  #"Navigation 1" = Source{[Schema = "dbo", Item = "vw_EmployeeTerritories"]}[Data]
 				in
 				  #"Navigation 1"
+
+	changedProperty = IsHidden
 
 	annotation PBI_ResultType = Table
 

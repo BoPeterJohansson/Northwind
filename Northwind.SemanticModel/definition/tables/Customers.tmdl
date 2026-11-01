@@ -3,15 +3,20 @@ table Customers
 
 	column CustomerID
 		dataType: string
+		isHidden
+		isKey
 		lineageTag: b53f2a74-d730-4f8e-a82f-057d9895a3d1
 		summarizeBy: none
 		sourceColumn: CustomerID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Company Name'
 		dataType: string
 		lineageTag: 2f6abbf1-e449-40e8-9b62-52cedb8804de
+		isDefaultLabel
 		summarizeBy: none
 		sourceColumn: Company Name
 

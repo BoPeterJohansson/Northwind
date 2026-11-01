@@ -3,19 +3,25 @@ table 'Order Details'
 
 	column OrderID
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 821b97d3-9f25-42ff-92c5-4ea44a345c53
 		summarizeBy: none
 		sourceColumn: OrderID
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column ProductID
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 3262b105-2562-4780-a4cd-3b1768cbd729
 		summarizeBy: none
 		sourceColumn: ProductID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

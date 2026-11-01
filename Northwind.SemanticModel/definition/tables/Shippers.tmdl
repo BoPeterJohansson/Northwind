@@ -3,16 +3,21 @@ table Shippers
 
 	column ShipperID
 		dataType: int64
+		isHidden
+		isKey
 		formatString: 0
 		lineageTag: 43215dc6-68b5-40e9-b2f8-86fc01b56135
 		summarizeBy: none
 		sourceColumn: ShipperID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Company Name'
 		dataType: string
 		lineageTag: d3a7f9fd-9593-42c9-847c-4797a9bb1d5b
+		isDefaultLabel
 		summarizeBy: none
 		sourceColumn: Company Name
 

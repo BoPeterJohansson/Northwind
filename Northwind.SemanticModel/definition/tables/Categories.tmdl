@@ -3,16 +3,21 @@ table Categories
 
 	column CategoryID
 		dataType: int64
+		isHidden
+		isKey
 		formatString: 0
 		lineageTag: 6051d953-eec3-4492-9732-37b47893f2fd
 		summarizeBy: none
 		sourceColumn: CategoryID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Category Name'
 		dataType: string
 		lineageTag: bee2acd2-1ab3-4c62-bd90-3c11d7934425
+		isDefaultLabel
 		summarizeBy: none
 		sourceColumn: Category Name
 

@@ -3,16 +3,21 @@ table Suppliers
 
 	column SupplierID
 		dataType: int64
+		isHidden
+		isKey
 		formatString: 0
 		lineageTag: 126eefc7-0ad0-47c0-8a18-6467fd4bd82a
 		summarizeBy: none
 		sourceColumn: SupplierID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Company Name'
 		dataType: string
 		lineageTag: 559aff36-8d56-4833-bfe0-2d1dfc334801
+		isDefaultLabel
 		summarizeBy: none
 		sourceColumn: Company Name
 

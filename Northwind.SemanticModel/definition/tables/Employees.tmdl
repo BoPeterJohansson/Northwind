@@ -3,10 +3,14 @@ table Employees
 
 	column EmployeeID
 		dataType: int64
+		isHidden
+		isKey
 		formatString: 0
 		lineageTag: 213fdd21-e32f-4546-9604-a6d896482a61
 		summarizeBy: none
 		sourceColumn: EmployeeID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -44,21 +48,25 @@ table Employees
 
 	column 'Birth Date'
 		dataType: dateTime
-		formatString: General Date
+		formatString: Short Date
 		lineageTag: 9fe7716b-89be-439e-a30a-b42ca9480740
 		summarizeBy: none
 		sourceColumn: Birth Date
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column 'Hire Date'
 		dataType: dateTime
-		formatString: General Date
+		formatString: Short Date
 		lineageTag: 5d557757-d3d4-4de6-9392-1cfd54b604b1
 		summarizeBy: none
 		sourceColumn: Hire Date
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column Address
 		dataType: string

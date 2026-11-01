@@ -3,33 +3,43 @@ table Orders
 
 	column OrderID
 		dataType: int64
+		isHidden
+		isKey
 		formatString: 0
 		lineageTag: c15537af-d090-44a1-87fe-766792ad0d17
 		summarizeBy: none
 		sourceColumn: OrderID
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column CustomerID
 		dataType: string
+		isHidden
 		lineageTag: da7c9554-85cb-45cf-98a1-268750d090b7
 		summarizeBy: none
 		sourceColumn: CustomerID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column EmployeeID
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: e893e778-db9c-4601-ae1b-2bfd8ac09e77
 		summarizeBy: none
 		sourceColumn: EmployeeID
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column 'Order Date'
 		dataType: dateTime
-		formatString: Long Date
+		formatString: Short Date
 		lineageTag: 37d5351f-19e2-43d2-b9fb-51332a2ca4cb
 		summarizeBy: none
 		sourceColumn: Order Date
@@ -40,7 +50,7 @@ table Orders
 
 	column 'Required Date'
 		dataType: dateTime
-		formatString: Long Date
+		formatString: Short Date
 		lineageTag: 02264d4c-fd50-4284-852a-4244bc80f5c6
 		summarizeBy: none
 		sourceColumn: Required Date
@@ -51,7 +61,7 @@ table Orders
 
 	column 'Shipped Date'
 		dataType: dateTime
-		formatString: Long Date
+		formatString: Short Date
 		lineageTag: 24e68602-8ae1-41cd-ab5b-dcd6d7bfd6ab
 		summarizeBy: none
 		sourceColumn: Shipped Date
@@ -121,10 +131,13 @@ table Orders
 
 	column ShipperID
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 500ed739-b7ce-4350-a27f-1ddd8e8aa288
 		summarizeBy: none
 		sourceColumn: ShipperID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

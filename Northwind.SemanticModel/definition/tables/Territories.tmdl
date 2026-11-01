@@ -3,24 +3,32 @@ table Territories
 
 	column TerritoryID
 		dataType: string
+		isHidden
+		isKey
 		lineageTag: 28f1c269-84d3-4ae1-ae04-54de21153d5e
 		summarizeBy: none
 		sourceColumn: TerritoryID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column RegionID
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 6ba9bbbb-7fc9-42a8-93e9-2f5fa761d769
 		summarizeBy: none
 		sourceColumn: RegionID
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Territory Description'
 		dataType: string
 		lineageTag: 03d18fe2-7131-452d-9c4f-9f8f89cb43e3
+		isDefaultLabel
 		summarizeBy: none
 		sourceColumn: Territory Description
 
