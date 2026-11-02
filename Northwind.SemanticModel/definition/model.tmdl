@@ -10,7 +10,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["Categories","Customers","Employees","EmployeeTerritories","Orders","Order Details","Products","Region","Shippers","Suppliers","Territories"]
+annotation PBI_QueryOrder = ["Categories","Customers","Employees","EmployeeTerritories","Orders","Order Details","Products","Region","Shippers","Suppliers","Territories","Calendar"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -25,6 +25,7 @@ ref table Region
 ref table Shippers
 ref table Suppliers
 ref table Territories
+ref table Calendar
 
 ref cultureInfo en-US
 

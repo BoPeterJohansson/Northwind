@@ -155,6 +155,19 @@
             "width": 234
           },
           "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1934.0192041918708,
+            "y": 852.54751093556058
+          },
+          "nodeIndex": "Calendar",
+          "nodeLineageTag": "6d94c067-6286-4a45-a166-8897c2d1359e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",
