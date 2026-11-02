@@ -64,17 +64,16 @@
         },
         {
           "location": {
-            "x": 0,
-            "y": 374.14597639866719
+            "x": 8.8601922812527647,
+            "y": 165.2985869119949
           },
           "nodeIndex": "Orders",
           "nodeLineageTag": "671241f8-3fa1-4bd0-9945-1f0a71bb37ac",
           "size": {
-            "height": 176,
+            "height": 448,
             "width": 234
           },
-          "zIndex": 5,
-          "expandedHeight": 448
+          "zIndex": 5
         },
         {
           "location": {
@@ -164,7 +163,7 @@
           "nodeIndex": "Calendar",
           "nodeLineageTag": "6d94c067-6286-4a45-a166-8897c2d1359e",
           "size": {
-            "height": 300,
+            "height": 392.39914807592163,
             "width": 234
           },
           "zIndex": 0

@@ -141,6 +141,42 @@ table Orders
 
 		annotation SummarizationSetBy = Automatic
 
+	column OrderDateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a90a332e-37bf-4fe9-b085-380558ec382f
+		summarizeBy: none
+		sourceColumn: OrderDateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RequiredDateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 90f49db1-b70c-41c0-818a-cc1fea573d98
+		summarizeBy: count
+		sourceColumn: RequiredDateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippedDateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 65c7913f-9062-4296-a41e-57c60b57b70e
+		summarizeBy: count
+		sourceColumn: ShippedDateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Orders = m
 		mode: import
 		source =

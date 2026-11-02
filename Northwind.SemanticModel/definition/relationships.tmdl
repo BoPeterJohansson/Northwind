@@ -40,3 +40,17 @@ relationship AutoDetected_729f5388-3e7a-4657-b207-67c6210358a2
 	fromColumn: Orders.ShipperID
 	toColumn: Shippers.ShipperID
 
+relationship fc5920a7-6f9b-ee2b-1c8f-f1500b9216a3
+	fromColumn: Orders.OrderDateKey
+	toColumn: Calendar.DateKey
+
+relationship e0cb08b5-3dfe-cb96-80fa-ca17c6964b57
+	isActive: false
+	fromColumn: Orders.RequiredDateKey
+	toColumn: Calendar.DateKey
+
+relationship 2c1f8e53-352a-90d5-79b0-432e63de338f
+	isActive: false
+	fromColumn: Orders.ShippedDateKey
+	toColumn: Calendar.DateKey
+

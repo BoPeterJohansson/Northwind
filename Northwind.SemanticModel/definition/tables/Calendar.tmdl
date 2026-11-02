@@ -3,11 +3,14 @@ table Calendar
 
 	column DateKey
 		dataType: int64
+		isHidden
 		isKey
 		formatString: 0
 		lineageTag: b2760209-b1e6-4c48-a691-8ff48197a38b
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: DateKey
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -27,7 +30,7 @@ table Calendar
 		dataType: int64
 		formatString: 0
 		lineageTag: 66676767-d577-44c4-b9bb-bf1d0a2d8bb0
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Year
 
 		annotation SummarizationSetBy = Automatic
@@ -36,28 +39,8 @@ table Calendar
 		dataType: int64
 		formatString: 0
 		lineageTag: 8e8c9293-4840-40ce-8827-12422cba4a9f
-		summarizeBy: sum
-		sourceColumn: Quarter
-
-		annotation SummarizationSetBy = Automatic
-
-	column MonthNumber
-		dataType: int64
-		formatString: 0
-		lineageTag: 5e92426c-8b77-4084-8e69-5b47c208169a
-		summarizeBy: sum
-		sourceColumn: MonthNumber
-
-		annotation SummarizationSetBy = Automatic
-
-	column MonthName
-		dataType: string
-		lineageTag: 106e7e09-b1b7-4e45-b4fc-670065e738d2
 		summarizeBy: none
-		sourceColumn: MonthName
-		sortByColumn: MonthNumber
-
-		changedProperty = SortByColumn
+		sourceColumn: Quarter
 
 		annotation SummarizationSetBy = Automatic
 
@@ -69,49 +52,69 @@ table Calendar
 
 		annotation SummarizationSetBy = Automatic
 
-	column DayOfMonth
+	column 'Month Number'
 		dataType: int64
 		formatString: 0
-		lineageTag: 5af77f2d-8e5b-446c-96c3-633737c2e929
-		summarizeBy: sum
-		sourceColumn: DayOfMonth
-
-		annotation SummarizationSetBy = Automatic
-
-	column DayName
-		dataType: string
-		lineageTag: 10c78922-4bf7-4792-9466-a3b3054096c1
+		lineageTag: 4f36df7c-ddae-474d-b198-7d1b441f9e49
 		summarizeBy: none
-		sourceColumn: DayName
+		sourceColumn: Month Number
 
 		annotation SummarizationSetBy = Automatic
 
-	column DayOfWeek
+	column 'Month Name'
+		dataType: string
+		lineageTag: 9f4d380d-8e44-4253-a9b7-372401c7ae3f
+		summarizeBy: none
+		sourceColumn: Month Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Of Month'
 		dataType: int64
 		formatString: 0
-		lineageTag: 774e169a-da93-4dfa-b23b-eb82e62bef7a
-		summarizeBy: sum
-		sourceColumn: DayOfWeek
+		lineageTag: 09c9b455-58e6-462e-ab6d-c7927d7a14f2
+		summarizeBy: none
+		sourceColumn: Day Of Month
 
 		annotation SummarizationSetBy = Automatic
 
-	column WeekStartDate
+	column 'Day Name'
+		dataType: string
+		lineageTag: 3c4ebd07-7506-46af-9df6-8f968b9d8c93
+		summarizeBy: none
+		sourceColumn: Day Name
+		sortByColumn: 'Day Of Week'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Of Week'
+		dataType: int64
+		formatString: 0
+		lineageTag: 923a519a-fa3f-4b2e-b22a-bd218e7f370d
+		summarizeBy: none
+		sourceColumn: Day Of Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Start Date'
 		dataType: dateTime
 		formatString: Short Date
-		lineageTag: ee73e0d9-f4b3-4df0-a09c-df3c6352c6d9
+		lineageTag: 7ce7d3bf-7732-47af-a213-10c2cca6d3c1
 		summarizeBy: none
-		sourceColumn: WeekStartDate
+		sourceColumn: Week Start Date
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
 
-	column IsWeekend
+	column 'Is Weekend'
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
-		lineageTag: df7f14cb-e1c0-42c9-8d4c-f24b3ee5f944
+		lineageTag: b0fe1053-4fed-4511-b242-2b2f40779908
 		summarizeBy: none
-		sourceColumn: IsWeekend
+		sourceColumn: Is Weekend
 
 		annotation SummarizationSetBy = Automatic
 
