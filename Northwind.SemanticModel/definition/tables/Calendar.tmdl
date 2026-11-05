@@ -1,5 +1,6 @@
 table Calendar
 	lineageTag: 6d94c067-6286-4a45-a166-8897c2d1359e
+	dataCategory: Time
 
 	column DateKey
 		dataType: int64
