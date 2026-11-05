@@ -16,24 +16,14 @@ SELECT
       ,[Country]
       ,[HomePhone]                  AS [Home Phone]
       ,[Extension]
-      --,[Photo]
+    --,[Photo]
       ,[Notes]
       ,[ReportsTo]                  AS [Reports To]
-      --,[PhotoPath]                  AS [Photo Path]
-
-        ,'<img src="data:image/bmp;base64,' +
-    CAST('' AS XML).value('xs:base64Binary(sql:column("b.BmpBytes"))', 'VARCHAR(MAX)') +
-  '" style="width:100px;height:100px;border-radius:50%;object-fit:cover;">' AS PhotoHtml
-
-
-
+    --,[PhotoPath]                  AS [Photo Path]
+      ,CONCAT(
+        'https://raw.githubusercontent.com/BoPeterJohansson/Northwind/refs/heads/main/Employee%20Images/',
+        EmployeeID,
+        '.jpg'
+        ) AS ImageURL
 
 FROM [Northwind].[dbo].[Employees]
-
-CROSS APPLY (
-  SELECT SUBSTRING(
-           CAST([Photo] AS VARBINARY(MAX)),
-           CHARINDEX(0x424D, CAST([Photo] AS VARBINARY(MAX))),
-           DATALENGTH([Photo])
-         ) AS BmpBytes
-) b;
